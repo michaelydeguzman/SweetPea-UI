@@ -2,11 +2,11 @@ import React from "react";
 
 import { Grid, Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
-import { StyledCard } from '../components/StyledCard';
+import { StyledCard } from '../components/ui/StyledCard';
 
 export function Menu() {
 
-    const [products, getProducts] = useState([]);
+    const [products, setProducts] = useState([]);
 
     const cards = products.map(product =>{
         return (
@@ -43,7 +43,7 @@ export function Menu() {
         fetch('https://fakestoreapi.com/products')
         .then(data => data.json())
         .then(result=> {
-            getProducts(result);
+            setProducts(result);
             console.log(result);
         })
     }, []);
