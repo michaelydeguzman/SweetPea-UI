@@ -9,7 +9,7 @@ const initialState = {
 }
 
 export const fetchMenuGroupsAsync = createAsyncThunk(
-    'menu/fetchMenuGroups',
+    'menuGroup/fetchMenuGroupsAsync',
     async (thunkAPI) => {
       try {
         const response = await menuAPI.fetchMenuGroups();
