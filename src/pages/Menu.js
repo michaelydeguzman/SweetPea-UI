@@ -3,6 +3,7 @@ import React from "react";
 import { Grid, Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { StyledCard } from '../components/ui/StyledCard';
+import { menuActions } from '../features/menu/menuSlice'
 
 export function Menu() {
 

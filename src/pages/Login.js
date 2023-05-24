@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 // import authAction from '../../store/actions/authAction'; 
-import { loginAsync } from '../store/reducers/authSlice';
+import { loginAsync } from '../features/authentication/authSlice';
 import logo from '../assets/Logo PNG.png';
 import { TextField, Button, Box, Card, CardContent, Typography, InputAdornment } from '@mui/material'
 import IconButton from '@mui/material/IconButton';
