@@ -106,8 +106,7 @@ export function Login() {
                                                         aria-label="toggle password visibility"
                                                         onClick={handleClickShowPassword}
                                                         //onMouseDown={handleMouseDownPassword}
-                                                        edge="end"
-                                                    >
+                                                        edge="end">
                                                         {showPassword ? <VisibilityOff /> : <Visibility />}
                                                     </IconButton>
                                                 </InputAdornment>
@@ -121,7 +120,9 @@ export function Login() {
                                     variant="contained"
                                     size="large"
                                     color="primary"
-                                    sx={{ width: '90%' }}>Login</Button>
+                                    sx={{ width: '90%' }}>
+                                        Login
+                                </Button>
                             </form>
                         </Box>
                     </CardContent>

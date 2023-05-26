@@ -2,10 +2,17 @@ import React from "react";
 
 import { Grid, Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
-import { StyledCard } from '../components/ui/StyledCard';
-import { menuActions } from '../features/menu/menuSlice'
+import { StyledCard } from '../../components/ui/StyledCard';
+import { fetchMenuGroupsAsync } from './menuSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
-export function Menu() {
+export function Menu(props) {
+
+    const { isMenuClicked } = props;
+
+    const menuGroups = useSelector((state)=> state.menu.menuGroups);
+    
+    const dispatch = useDispatch();
 
     const [products, setProducts] = useState([]);
 

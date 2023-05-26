@@ -7,7 +7,12 @@ const API_URL = process.env.NODE_ENV === 'production' ? productionAPI : developm
 
 const menuAPI = {
     fetchMenuGroups: async () => {
-        const response = await axios.get(`${API_URL}/menu/menu_groups`);
+        const response = await axios.get(`${API_URL}/v1/menu/menu_groups`);
+        return response;
+    },
+
+    fetchProductsByMenu: async (menuGroupId) => {
+        const response = await axios.get(`${API_URL}/v1/menu/menu_groups/${menuGroupId}`);
         return response;
     }
 }

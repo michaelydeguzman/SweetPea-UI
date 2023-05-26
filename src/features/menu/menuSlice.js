@@ -4,12 +4,12 @@ import menuAPI from './menuAPI';
 
 const initialState = {
     loading: false,
-    menuGroup: [],
+    menuGroups: [],
     error: ''
 }
 
 export const fetchMenuGroupsAsync = createAsyncThunk(
-    'menuGroup/fetchMenuGroupsAsync',
+    'menu/fetchMenuGroupsAsync',
     async (thunkAPI) => {
       try {
         const response = await menuAPI.fetchMenuGroups();
@@ -21,7 +21,7 @@ export const fetchMenuGroupsAsync = createAsyncThunk(
 );
 
 const menuSlice = createSlice({
-    name: 'menuGroup',
+    name: 'menu',
     initialState,
     reducers: {
         
@@ -32,12 +32,12 @@ const menuSlice = createSlice({
         })
         builder.addCase(fetchMenuGroupsAsync.fulfilled, (state, action) => {
             state.loading = false
-            state.menuGroup = action.payload
+            state.menuGroups = action.payload
             state.error = ''
         })
         builder.addCase(fetchMenuGroupsAsync.rejected, (state, action) => {
             state.loading = false
-            state.menuGroup = []
+            state.menuGroups = []
             state.error = action.error.message
         })
     }

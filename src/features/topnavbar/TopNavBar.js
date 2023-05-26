@@ -13,17 +13,21 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import spIcon from '../../assets/spIcon.png';
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { selectTab } from './topNavBarSlice';
 
-const pages = ['Menu', 'Promos', 'Branches', 'Be a Partner'];
+const pages = ['Menu', 'Promos', 'Branches'];
 const settings = ['Account', 'My Membership Points', 'Logout'];
 
-export function MainAppBar() {
+export function TopNavBar() {
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
+    const [isMenuClicked, setIsMenuClicked] = useState(false);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -44,11 +48,15 @@ export function MainAppBar() {
         navigate('/Login');
     }
 
+    const handleMenuItemClick = (event, index) => {
+        handleCloseNavMenu();
+        dispatch(selectTab(index));
+    }
+
     return (
-        <AppBar position="static">
+        <AppBar position="fixed">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
                     <img src={spIcon} className="App-icon" alt="appIcon" height="35" />
                     <Typography
                         variant="h6"
@@ -58,16 +66,15 @@ export function MainAppBar() {
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
+                            fontFamily: 'Segoe UI',
                             fontWeight: 700,
-                            letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
                         }}
                     >
                         SWEET PEA
                     </Typography>
-
+               
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -84,12 +91,12 @@ export function MainAppBar() {
                             anchorEl={anchorElNav}
                             anchorOrigin={{
                                 vertical: 'bottom',
-                                horizontal: 'left',
+                                horizontal: 'center',
                             }}
                             keepMounted
                             transformOrigin={{
                                 vertical: 'top',
-                                horizontal: 'left',
+                                horizontal: 'center',
                             }}
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
@@ -98,7 +105,7 @@ export function MainAppBar() {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                <MenuItem key={page} onClick={(e)=>handleMenuItemClick(e, pages.indexOf(page))}>
                                     <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
                             ))}
@@ -127,7 +134,7 @@ export function MainAppBar() {
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={handleCloseNavMenu}
+                                onClick={(e)=>handleMenuItemClick(e, pages.indexOf(page))}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 {page}
@@ -144,15 +151,13 @@ export function MainAppBar() {
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
                             fontWeight: 700,
-                            letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
                             cursor: 'pointer'
                         }}
                     >
-                        LOGIN
+                        Login
                     </Typography>
                     {/* </Box> */}
 
@@ -192,4 +197,4 @@ export function MainAppBar() {
     );
 }
 
-export default MainAppBar;
+export default TopNavBar;
