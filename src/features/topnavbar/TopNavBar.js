@@ -72,7 +72,7 @@ export function TopNavBar() {
                             textDecoration: 'none',
                         }}
                     >
-                        SWEET PEA
+                        Sweet Pea
                     </Typography>
                
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

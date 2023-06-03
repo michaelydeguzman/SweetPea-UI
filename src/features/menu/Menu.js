@@ -10,7 +10,7 @@ export function Menu(props) {
 
     const { isMenuClicked } = props;
 
-    const menuGroups = useSelector((state)=> state.menu.menuGroups);
+    const menuGroups = useSelector((state) => state.menu.menuGroups);
     
     const dispatch = useDispatch();
 
